@@ -7,7 +7,7 @@
 rake db:fixtures:load
 ```
 
-###Credential used to test
+###Test credentials
 
 >**email:** st1@ironhack.com
 
