@@ -38,6 +38,9 @@ gem 'mysql2', '~> 0.3.18'
 # Use Devise for authentication
 gem 'devise'
 
+# Heroku
+gem 'rails_12factor', group: :production
+
 group :development, :test do
   # Call 'debugger' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

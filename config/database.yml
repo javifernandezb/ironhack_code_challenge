@@ -5,14 +5,14 @@
 #   gem 'sqlite3'
 #
 default: &default
+
+
+development:
   adapter: mysql2
   encoding: utf8
   reconnect: false
   socket: /tmp/mysql.sock
   pool: 5
-
-development:
-  <<: *default
   database: ironhack_dev
   username: root
   password:
@@ -25,5 +25,9 @@ test:
   database: ironhack_test
 
 production:
-  <<: *default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
   database: ironhack
+  username: ironhack
+  password: ironhack
