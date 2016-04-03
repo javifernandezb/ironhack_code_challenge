@@ -10,6 +10,7 @@ rake db:fixtures:load
 
 Credential used to test
 >**email:** st1@ironhack.com
+
 >**password:** pw1
 
 Get user exercises with basic auth
