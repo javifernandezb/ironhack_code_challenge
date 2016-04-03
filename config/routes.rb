@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  devise_for :students
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -55,12 +54,9 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
-  # Get list of exercises for a student
-  get '/exercises' => 'student#exercises', :defaults => { :format => :json }
 
-  # Get global progress
-  get '/progress' => 'student#progress', :defaults => { :format => :json }
-
-  # Update student exercise progress
-  post '/exercise/:id' => 'exercise#update', :defaults => { :format => :json }
+  namespace :api do
+    resources :exercises, :only => [:index, :update], :defaults => { :format => :json }
+    get '/progress' => 'student#progress', :defaults => { :format => :json }
+  end
 end
