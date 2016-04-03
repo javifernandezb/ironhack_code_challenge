@@ -14,4 +14,14 @@ class Student < ActiveRecord::Base
             :presence   => true,
             :format     => { :with => /\A([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})\z/i },
             :uniqueness => { :case_sensitive => false }
+
+  #----------------------------------------------------------------------.
+  # Send message vía Slack to the student assistant that he has finished |
+  # the exercise                                                         |
+  #----------------------------------------------------------------------'
+  def notify_exercise_completion
+    self.assistants.each do |assitant|
+      # Notify assistant
+    end
+  end
 end
