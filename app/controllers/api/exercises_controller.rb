@@ -4,8 +4,7 @@ class Api::ExercisesController < ApplicationController
   # Get user exercises |
   #--------------------'
   def index
-    student = check_auth
-    render :json => student.exercises.to_json
+    render :json => @student.pre_works.to_json
   end
 
   #-------------------------------------------------------------------------.
@@ -18,7 +17,9 @@ class Api::ExercisesController < ApplicationController
   #    · In progress                                                        |
   #    · Done                                                               |
   #-------------------------------------------------------------------------'
-  def update
-    render :json => { }
+  def create
+    exercise = @student.exercises.where(:pre_work_id => params[:pre_work_id]).first_or_create
+    exercise.update_attributes({:url => params[:url], :completed => params[:completed]})
+    render :json => exercise.to_json
   end
 end

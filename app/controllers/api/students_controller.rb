@@ -5,6 +5,11 @@ class Api::StudentsController < ApplicationController
   # Total Progress(%) = N. of completed exercises * 100 / Total N. of Exercises |
   #-----------------------------------------------------------------------------'
   def progress
-    render :json => { }
+    completed = @student.exercises.where(:completed => true).count
+    puts "===> completed: #{completed}"
+    total     = @student.pre_works.count
+    puts "===> total: #{total}"
+
+    render :json => completed * 100.0 / total
   end
 end
