@@ -1,13 +1,76 @@
+%p
+  Progress:
+  %span.progress loading...
+  = '%'
+
 %table
   %tr
     %th Learning unit
     %th Link
     %th Status
+    %th URL
+    %th Completed?
     %th
-  - @pre_works.each do |pre_work|
-    - exercise = current_student.exercises.find_by_pre_work_id(pre_work.id)
-    %tr
-      %td= pre_work.learning_unit
-      %td= link_to pre_work.url
-      %td= exercise ? exercise.status : 'To do'
-      %td= link_to 'update', (exercise ? edit_exercise_path(exercise) : new_exercise_path)
+
+  %tr.loading
+    %td{ :colspan => 5 } Loading...
+
+:javascript
+  $('document').ready(function() {
+    $.ajax({
+      url: '/api/exercises',
+      type: 'GET',
+      dataType: "json",
+      success: function(jsonData) {
+        $('.loading').remove();
+        $.each(jsonData, function(index, value) {
+          var $tr = $('<tr pre_work_id=' + value.pre_work_id + '>');
+              $tr.append($('<td>', { html: value.learning_unit }));
+              $tr.append($('<td>', { html: "<a href=" + value.url + ">" + value.url + "</a>" }));
+              $tr.append($('<td>', { html: value.status }));
+              $tr.append($('<td>', { html: '<input type="text" value="' + value.exercise + '"/>' }));
+              $tr.append($('<td>', { html: '<input type="checkbox"/>' }));
+              $tr.append($('<td>', { html: "<a class='submit' href='javascript:void(0)'>Submit</a>" }));
+
+          $('table').append($tr);
+          console.info('===> ok', value);
+        })
+      },
+      error: function () { console.info('===> ERROR'); }
+    });
+
+    $.ajax({
+      url: '/api/progress',
+      type: 'GET',
+      dataType: "json",
+      success: function(jsonData) {
+        $('.progress').html(jsonData);
+      },
+      error: function () { console.info('===> ERROR'); }
+    });
+
+    $(document).on('click', '.submit', function() {
+      var $parent = $(this).parents('tr');
+      var pre_work_id = $parent.attr('pre_work_id');
+      var url = $parent.find('input[type="text"]').val();
+      var completed = $parent.find('input[type="checkbox"]')[0].checked;
+
+      if (url != '') {
+        var $tr = $('<tr>');
+            $tr.append($('<td colspan=5>', { html: 'Loading...' }));
+
+        $.ajax({
+          url: '/api/exercises',
+          type: 'POST',
+          dataType: "json",
+          data: { 'pre_work_id': pre_work_id,
+                  'url': url,
+                  'completed': completed },
+          success: function(jsonData) {
+            window.location.reload();
+          },
+          error: function () { console.info('===> ERROR'); }
+        });
+      }
+    });
+  });

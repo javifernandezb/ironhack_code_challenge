@@ -13,11 +13,14 @@ class Api::ExercisesController < ApplicationController
     response_array = []
 
     current_student.pre_works.each do |pre_work|
+      exercise = current_student.exercises.find_by_pre_work_id(pre_work.id)
+
       response_array << {
         pre_work_id: pre_work.id,
         learning_unit: pre_work.learning_unit,
         url: pre_work.url,
-        status: pre_work.status(current_student)
+        status: exercise ? exercise.status : 'To do',
+        exercise: exercise ? exercise.url : ''
       }
     end
     render :json => response_array
