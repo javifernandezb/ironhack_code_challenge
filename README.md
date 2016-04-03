@@ -7,6 +7,9 @@ rake db:fixtures:load
 Heroku URL
 https://calm-falls-75702.herokuapp.com/
 
+email: st1@ironhack.com
+passwrod: pw1
+
 Get user exercises with basic auth (username: st1@ironhack.com, password: pw1)
 curl -X GET -H "Authorization: Basic c3QxQGlyb25oYWNrLmNvbTpwdzE=" -H "Accept: application/json" -H "Content-Type: application/json" "https://calm-falls-75702.herokuapp.com/api/exercises.json"
 
