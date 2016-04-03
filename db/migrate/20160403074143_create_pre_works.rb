@@ -2,8 +2,6 @@ class CreatePreWorks < ActiveRecord::Migration
   def change
     create_table :pre_works do |t|
       t.integer :bootcamp_id
-      t.string :name
-      t.integer :version
       t.string :url
       t.string :learning_unit
 

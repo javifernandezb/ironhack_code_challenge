@@ -11,8 +11,7 @@ class Api::ExercisesController < ApplicationController
 
       response_array << {
         pre_work_id: pre_work.id,
-        name: pre_work.name,
-        version: pre_work.version,
+        learning_unit: pre_work.learning_unit,
         url: pre_work.url,
         status: exercise ? exercise.status : 'To do'
       }

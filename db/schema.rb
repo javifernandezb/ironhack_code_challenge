@@ -30,8 +30,6 @@ ActiveRecord::Schema.define(version: 20160403085230) do
 
   create_table "pre_works", force: :cascade do |t|
     t.integer  "bootcamp_id",   limit: 4
-    t.string   "name",          limit: 255
-    t.integer  "version",       limit: 4
     t.string   "url",           limit: 255
     t.string   "learning_unit", limit: 255
     t.datetime "created_at",                null: false

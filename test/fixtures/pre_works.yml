@@ -3,31 +3,23 @@
 one:
   id: 1
   bootcamp_id: 1
-  name: name1
-  version: 1
   url: url1
   learning_unit: Git
 
 two:
   id: 2
   bootcamp_id: 1
-  name: name1
-  version: 2
   url: url2
-  learning_unit: Git
+  learning_unit: Javascript
 
 three:
   id: 3
   bootcamp_id: 1
-  name: name2
-  version: 1
   url: url3
   learning_unit: Ruby
 
 four:
   id: 4
   bootcamp_id: 2
-  name: name3
-  version: 1
   url: url4
   learning_unit: Javascript
