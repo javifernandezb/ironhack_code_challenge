@@ -10,7 +10,4 @@ class PreWork < ActiveRecord::Base
     exercise = student.exercises.find_by_pre_work_id(self.id)
     exercise ? exercise.status : 'To do'
   end
-
-  def link(student)
-  end
 end

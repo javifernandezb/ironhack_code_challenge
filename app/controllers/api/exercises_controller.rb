@@ -32,18 +32,10 @@ class Api::ExercisesController < ApplicationController
   #-------------------------------------------------------------------------'
   def create
     params[:completed] = params[:completed] == 'true' || params[:completed] == 1
-    puts '==============> 1'
     exercise = current_student.exercises.where(:pre_work_id => params[:pre_work_id]).first_or_initialize
-    puts '==============> 2'
-    puts '====='
-    puts params[:url].inspect
-    puts params[:completed].inspect
-    puts '====='
     exercise.url = params[:url]
     exercise.completed = params[:completed]
     exercise.save
-    puts exercise.errors.inspect
-    puts '==============> 3'
     render :json => exercise.to_json
   end
 end

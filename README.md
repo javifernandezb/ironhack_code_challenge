@@ -14,7 +14,7 @@ Credential used to test
 >**password:** pw1
 
 
-Get user exercises with basic auth
+Get user exercises
 ```
 curl -X GET -H "Authorization: Basic c3QxQGlyb25oYWNrLmNvbTpwdzE=" -H "Accept: application/json" -H "Content-Type: application/json" "https://calm-falls-75702.herokuapp.com/api/exercises.json"
 ```
