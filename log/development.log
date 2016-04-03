@@ -1,0 +1,408 @@
+  [1m[36m (76.6ms)[0m  [1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (64.0ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations`  ON `schema_migrations` (`version`) 
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to CreateStudents (20160403072136)
+  [1m[35m (45.2ms)[0m  CREATE TABLE `students` (`id` int(11) auto_increment PRIMARY KEY, `name` varchar(255), `surname` varchar(255), `password` varchar(255), `email` varchar(255), `slack_username` varchar(255), `bootcamp_id` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160403072136')
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Migrating to CreateExercises (20160403072330)
+  [1m[35m (17.3ms)[0m  CREATE TABLE `exercises` (`id` int(11) auto_increment PRIMARY KEY, `name` varchar(255), `version` int(11), `url` varchar(255), `learning_unit` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (0.6ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160403072330')
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+Migrating to CreateProgresses (20160403073942)
+  [1m[35m (18.4ms)[0m  CREATE TABLE `progresses` (`id` int(11) auto_increment PRIMARY KEY, `student_id` int(11), `exercise_id` int(11), `status` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160403073942')
+  [1m[36m (1.4ms)[0m  [1mCOMMIT[0m
+Migrating to CreateBootcamps (20160403074105)
+  [1m[35m (13.3ms)[0m  CREATE TABLE `bootcamps` (`id` int(11) auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.7ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160403074105')
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Migrating to CreatePreWorks (20160403074143)
+  [1m[35m (22.0ms)[0m  CREATE TABLE `pre_works` (`id` int(11) auto_increment PRIMARY KEY, `bootcamp_id` int(11), `exercise_id` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160403074143')
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+  [1m[36m (0.7ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'ironhack_dev'
+  AND fk.table_name = 'bootcamps'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `bootcamps`
+  [1m[36m (0.3ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'ironhack_dev'
+  AND fk.table_name = 'exercises'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `exercises`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'ironhack_dev'
+  AND fk.table_name = 'pre_works'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `pre_works`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'ironhack_dev'
+  AND fk.table_name = 'progresses'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `progresses`
+  [1m[36m (1.4ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'ironhack_dev'
+  AND fk.table_name = 'students'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `students`
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+Migrating to CreatePreWorks (20160403074143)
+  [1m[36m (9.3ms)[0m  [1mDROP TABLE `pre_works`[0m
+  [1m[35mSQL (1.7ms)[0m  DELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20160403074143'
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.3ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'ironhack_dev'
+  AND fk.table_name = 'bootcamps'
+
+  [1m[36m (0.1ms)[0m  [1mSHOW CREATE TABLE `bootcamps`[0m
+  [1m[35m (0.2ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'ironhack_dev'
+  AND fk.table_name = 'exercises'
+
+  [1m[36m (0.1ms)[0m  [1mSHOW CREATE TABLE `exercises`[0m
+  [1m[35m (0.3ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'ironhack_dev'
+  AND fk.table_name = 'progresses'
+
+  [1m[36m (0.2ms)[0m  [1mSHOW CREATE TABLE `progresses`[0m
+  [1m[35m (0.2ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'ironhack_dev'
+  AND fk.table_name = 'students'
+
+  [1m[36m (0.2ms)[0m  [1mSHOW CREATE TABLE `students`[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+Migrating to CreateBootcamps (20160403074105)
+  [1m[36m (4.3ms)[0m  [1mDROP TABLE `bootcamps`[0m
+  [1m[35mSQL (0.5ms)[0m  DELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20160403074105'
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.3ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'ironhack_dev'
+  AND fk.table_name = 'exercises'
+
+  [1m[36m (0.2ms)[0m  [1mSHOW CREATE TABLE `exercises`[0m
+  [1m[35m (0.3ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'ironhack_dev'
+  AND fk.table_name = 'progresses'
+
+  [1m[36m (0.2ms)[0m  [1mSHOW CREATE TABLE `progresses`[0m
+  [1m[35m (0.8ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'ironhack_dev'
+  AND fk.table_name = 'students'
+
+  [1m[36m (0.9ms)[0m  [1mSHOW CREATE TABLE `students`[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+Migrating to CreateProgresses (20160403073942)
+  [1m[36m (5.1ms)[0m  [1mDROP TABLE `progresses`[0m
+  [1m[35mSQL (0.5ms)[0m  DELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20160403073942'
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.2ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'ironhack_dev'
+  AND fk.table_name = 'exercises'
+
+  [1m[36m (0.1ms)[0m  [1mSHOW CREATE TABLE `exercises`[0m
+  [1m[35m (0.2ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'ironhack_dev'
+  AND fk.table_name = 'students'
+
+  [1m[36m (0.1ms)[0m  [1mSHOW CREATE TABLE `students`[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.7ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+Migrating to CreateExercises (20160403072330)
+  [1m[36m (5.1ms)[0m  [1mDROP TABLE `exercises`[0m
+  [1m[35mSQL (2.1ms)[0m  DELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20160403072330'
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (1.0ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'ironhack_dev'
+  AND fk.table_name = 'students'
+
+  [1m[36m (0.5ms)[0m  [1mSHOW CREATE TABLE `students`[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+Migrating to CreateStudents (20160403072136)
+  [1m[36m (1.8ms)[0m  [1mDROP TABLE `students`[0m
+  [1m[35mSQL (0.5ms)[0m  DELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20160403072136'
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to CreateStudents (20160403072136)
+  [1m[35m (34.0ms)[0m  CREATE TABLE `students` (`id` int(11) auto_increment PRIMARY KEY, `name` varchar(255), `surname` varchar(255), `password` varchar(255), `email` varchar(255), `slack_username` varchar(255), `bootcamp_id` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.5ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160403072136')
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Migrating to CreateExercises (20160403072330)
+  [1m[35m (15.3ms)[0m  CREATE TABLE `exercises` (`id` int(11) auto_increment PRIMARY KEY, `student_id` int(11), `pre_work_id` int(11), `completed` tinyint(1), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160403072330')
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Migrating to CreateBootcamps (20160403074105)
+  [1m[35m (14.9ms)[0m  CREATE TABLE `bootcamps` (`id` int(11) auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.7ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160403074105')
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Migrating to CreatePreWorks (20160403074143)
+  [1m[35m (11.3ms)[0m  CREATE TABLE `pre_works` (`id` int(11) auto_increment PRIMARY KEY, `bootcamp_id` int(11), `name` varchar(255), `version` int(11), `url` varchar(255), `learning_unit` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (0.8ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160403074143')
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'ironhack_dev'
+  AND fk.table_name = 'bootcamps'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `bootcamps`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'ironhack_dev'
+  AND fk.table_name = 'exercises'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `exercises`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'ironhack_dev'
+  AND fk.table_name = 'pre_works'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `pre_works`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'ironhack_dev'
+  AND fk.table_name = 'students'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `students`
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+Migrating to CreatePreWorks (20160403074143)
+  [1m[36m (3.9ms)[0m  [1mDROP TABLE `pre_works`[0m
+  [1m[35mSQL (0.5ms)[0m  DELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20160403074143'
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.2ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'ironhack_dev'
+  AND fk.table_name = 'bootcamps'
+
+  [1m[36m (0.1ms)[0m  [1mSHOW CREATE TABLE `bootcamps`[0m
+  [1m[35m (0.2ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'ironhack_dev'
+  AND fk.table_name = 'exercises'
+
+  [1m[36m (0.1ms)[0m  [1mSHOW CREATE TABLE `exercises`[0m
+  [1m[35m (0.2ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'ironhack_dev'
+  AND fk.table_name = 'students'
+
+  [1m[36m (0.1ms)[0m  [1mSHOW CREATE TABLE `students`[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+Migrating to CreateBootcamps (20160403074105)
+  [1m[36m (3.6ms)[0m  [1mDROP TABLE `bootcamps`[0m
+  [1m[35mSQL (0.5ms)[0m  DELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20160403074105'
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.2ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'ironhack_dev'
+  AND fk.table_name = 'exercises'
+
+  [1m[36m (0.1ms)[0m  [1mSHOW CREATE TABLE `exercises`[0m
+  [1m[35m (0.2ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'ironhack_dev'
+  AND fk.table_name = 'students'
+
+  [1m[36m (0.1ms)[0m  [1mSHOW CREATE TABLE `students`[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+Migrating to CreateExercises (20160403072330)
+  [1m[36m (2.3ms)[0m  [1mDROP TABLE `exercises`[0m
+  [1m[35mSQL (0.5ms)[0m  DELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20160403072330'
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.2ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'ironhack_dev'
+  AND fk.table_name = 'students'
+
+  [1m[36m (0.1ms)[0m  [1mSHOW CREATE TABLE `students`[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to CreateExercises (20160403072330)
+  [1m[35m (10.0ms)[0m  CREATE TABLE `exercises` (`id` int(11) auto_increment PRIMARY KEY, `student_id` int(11), `pre_work_id` int(11), `url` varchar(255), `completed` tinyint(1), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160403072330')
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Migrating to CreateBootcamps (20160403074105)
+  [1m[35m (12.3ms)[0m  CREATE TABLE `bootcamps` (`id` int(11) auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160403074105')
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Migrating to CreatePreWorks (20160403074143)
+  [1m[35m (8.5ms)[0m  CREATE TABLE `pre_works` (`id` int(11) auto_increment PRIMARY KEY, `bootcamp_id` int(11), `name` varchar(255), `version` int(11), `url` varchar(255), `learning_unit` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160403074143')
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+  [1m[36m (0.3ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'ironhack_dev'
+  AND fk.table_name = 'bootcamps'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `bootcamps`
+  [1m[36m (0.4ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'ironhack_dev'
+  AND fk.table_name = 'exercises'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `exercises`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'ironhack_dev'
+  AND fk.table_name = 'pre_works'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `pre_works`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'ironhack_dev'
+  AND fk.table_name = 'students'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `students`
