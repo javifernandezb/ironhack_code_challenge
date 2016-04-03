@@ -1,0 +1,13 @@
+%table
+  %tr
+    %th Learning unit
+    %th Link
+    %th Status
+    %th
+  - @pre_works.each do |pre_work|
+    - exercise = current_student.exercises.find_by_pre_work_id(pre_work.id)
+    %tr
+      %td= pre_work.learning_unit
+      %td= link_to pre_work.url
+      %td= exercise ? exercise.status : 'To do'
+      %td= link_to 'update', (exercise ? edit_exercise_path(exercise) : new_exercise_path)

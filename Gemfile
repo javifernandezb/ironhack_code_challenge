@@ -36,6 +36,9 @@ gem 'mysql2', '~> 0.3.18'
 # Use Devise for authentication
 gem 'devise'
 
+# HTML abstraction markup language
+gem 'haml'
+
 # Heroku
 gem 'rails_12factor', group: :production
 gem 'pg', group: :production
