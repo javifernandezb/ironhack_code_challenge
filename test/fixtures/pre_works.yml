@@ -1,6 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   bootcamp_id: 1
   name: name1
   version: 1
@@ -8,6 +9,7 @@ one:
   learning_unit: Git
 
 two:
+  id: 2
   bootcamp_id: 1
   name: name1
   version: 2
@@ -15,6 +17,7 @@ two:
   learning_unit: Git
 
 three:
+  id: 3
   bootcamp_id: 1
   name: name2
   version: 1
@@ -22,6 +25,7 @@ three:
   learning_unit: Ruby
 
 four:
+  id: 4
   bootcamp_id: 2
   name: name3
   version: 1

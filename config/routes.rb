@@ -57,6 +57,6 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :exercises, :only => [:index, :update], :defaults => { :format => :json }
-    get '/progress' => 'student#progress', :defaults => { :format => :json }
+    get '/progress' => 'students#progress', :defaults => { :format => :json }
   end
 end

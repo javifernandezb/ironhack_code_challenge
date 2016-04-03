@@ -1,6 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   name: st1
   surname: sr1
   encrypted_password: <%= Student.new.send(:password_digest, 'pw1') %>
@@ -9,6 +10,7 @@ one:
   bootcamp_id: 1
 
 two:
+  id: 2
   name: st2
   surname: sr2
   encrypted_password: <%= Student.new.send(:password_digest, 'pw2') %>
@@ -17,6 +19,7 @@ two:
   bootcamp_id: 1
 
 three:
+  id: 3
   name: st3
   surname: sr3
   encrypted_password: <%= Student.new.send(:password_digest, 'pw3') %>

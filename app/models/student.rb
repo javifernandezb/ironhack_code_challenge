@@ -3,7 +3,8 @@ class Student < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable
 
-  has_one :bootcamp
+  belongs_to :bootcamp
   has_many :progresses, :dependent => :destroy
-  has_many :exercises, :through => :bootcamp
+  has_many :exercises
+  has_many :pre_works, :through => :bootcamp
 end
