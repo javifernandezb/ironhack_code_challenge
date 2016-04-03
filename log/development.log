@@ -406,3 +406,244 @@ WHERE fk.referenced_column_name is not null
   AND fk.table_name = 'students'
 [0m
   [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `students`
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to AddDeviseToStudents (20160403085230)
+  [1m[35m (2.7ms)[0m  ALTER TABLE `students` ADD `email` varchar(255) DEFAULT '' NOT NULL
+  [1m[36m (42.3ms)[0m  [1mDROP DATABASE IF EXISTS `ironhack_dev`[0m
+  [1m[35m (0.4ms)[0m  DROP DATABASE IF EXISTS `ironhack_test`
+  [1m[36m (0.4ms)[0m  [1mCREATE DATABASE `ironhack_dev` DEFAULT CHARACTER SET `utf8` COLLATE `utf8_unicode_ci`[0m
+  [1m[35m (0.4ms)[0m  CREATE DATABASE `ironhack_test` DEFAULT CHARACTER SET `utf8` COLLATE `utf8_unicode_ci`
+  [1m[36m (26.7ms)[0m  [1mCREATE TABLE `bootcamps` (`id` int(11) auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (14.8ms)[0m  CREATE TABLE `exercises` (`id` int(11) auto_increment PRIMARY KEY, `student_id` int(11), `pre_work_id` int(11), `url` varchar(255), `completed` tinyint(1), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (11.5ms)[0m  [1mCREATE TABLE `pre_works` (`id` int(11) auto_increment PRIMARY KEY, `bootcamp_id` int(11), `name` varchar(255), `version` int(11), `url` varchar(255), `learning_unit` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (10.8ms)[0m  CREATE TABLE `students` (`id` int(11) auto_increment PRIMARY KEY, `name` varchar(255), `surname` varchar(255), `password` varchar(255), `email` varchar(255), `slack_username` varchar(255), `bootcamp_id` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (15.1ms)[0m  [1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (30.5ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations`  ON `schema_migrations` (`version`) 
+  [1m[36m (0.2ms)[0m  [1mSELECT version FROM `schema_migrations`[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20160403074143')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20160403072136')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20160403072330')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20160403074105')[0m
+  [1m[35m (34.2ms)[0m  CREATE TABLE `bootcamps` (`id` int(11) auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (30.0ms)[0m  [1mCREATE TABLE `exercises` (`id` int(11) auto_increment PRIMARY KEY, `student_id` int(11), `pre_work_id` int(11), `url` varchar(255), `completed` tinyint(1), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (16.3ms)[0m  CREATE TABLE `pre_works` (`id` int(11) auto_increment PRIMARY KEY, `bootcamp_id` int(11), `name` varchar(255), `version` int(11), `url` varchar(255), `learning_unit` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (14.1ms)[0m  [1mCREATE TABLE `students` (`id` int(11) auto_increment PRIMARY KEY, `name` varchar(255), `surname` varchar(255), `password` varchar(255), `email` varchar(255), `slack_username` varchar(255), `bootcamp_id` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (23.1ms)[0m  CREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB
+  [1m[36m (34.0ms)[0m  [1mCREATE UNIQUE INDEX `unique_schema_migrations`  ON `schema_migrations` (`version`) [0m
+  [1m[35m (0.3ms)[0m  SELECT version FROM `schema_migrations`
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20160403074143')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20160403072136')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20160403072330')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20160403074105')
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to AddDeviseToStudents (20160403085230)
+  [1m[35m (1.4ms)[0m  ALTER TABLE `students` ADD `email` varchar(255) DEFAULT '' NOT NULL
+  [1m[36m (10.9ms)[0m  [1mDROP DATABASE IF EXISTS `ironhack_dev`[0m
+  [1m[35m (31.1ms)[0m  DROP DATABASE IF EXISTS `ironhack_test`
+  [1m[36m (0.3ms)[0m  [1mCREATE DATABASE `ironhack_dev` DEFAULT CHARACTER SET `utf8` COLLATE `utf8_unicode_ci`[0m
+  [1m[35m (0.3ms)[0m  CREATE DATABASE `ironhack_test` DEFAULT CHARACTER SET `utf8` COLLATE `utf8_unicode_ci`
+  [1m[36m (27.5ms)[0m  [1mCREATE TABLE `bootcamps` (`id` int(11) auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (10.4ms)[0m  CREATE TABLE `exercises` (`id` int(11) auto_increment PRIMARY KEY, `student_id` int(11), `pre_work_id` int(11), `url` varchar(255), `completed` tinyint(1), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (8.7ms)[0m  [1mCREATE TABLE `pre_works` (`id` int(11) auto_increment PRIMARY KEY, `bootcamp_id` int(11), `name` varchar(255), `version` int(11), `url` varchar(255), `learning_unit` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (10.6ms)[0m  CREATE TABLE `students` (`id` int(11) auto_increment PRIMARY KEY, `name` varchar(255), `surname` varchar(255), `password` varchar(255), `email` varchar(255), `slack_username` varchar(255), `bootcamp_id` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (9.0ms)[0m  [1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (20.9ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations`  ON `schema_migrations` (`version`) 
+  [1m[36m (0.2ms)[0m  [1mSELECT version FROM `schema_migrations`[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20160403074143')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20160403072136')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20160403072330')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20160403074105')[0m
+  [1m[35m (16.7ms)[0m  CREATE TABLE `bootcamps` (`id` int(11) auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (13.6ms)[0m  [1mCREATE TABLE `exercises` (`id` int(11) auto_increment PRIMARY KEY, `student_id` int(11), `pre_work_id` int(11), `url` varchar(255), `completed` tinyint(1), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (10.9ms)[0m  CREATE TABLE `pre_works` (`id` int(11) auto_increment PRIMARY KEY, `bootcamp_id` int(11), `name` varchar(255), `version` int(11), `url` varchar(255), `learning_unit` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (9.1ms)[0m  [1mCREATE TABLE `students` (`id` int(11) auto_increment PRIMARY KEY, `name` varchar(255), `surname` varchar(255), `password` varchar(255), `email` varchar(255), `slack_username` varchar(255), `bootcamp_id` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (19.3ms)[0m  CREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB
+  [1m[36m (20.2ms)[0m  [1mCREATE UNIQUE INDEX `unique_schema_migrations`  ON `schema_migrations` (`version`) [0m
+  [1m[35m (0.2ms)[0m  SELECT version FROM `schema_migrations`
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20160403074143')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20160403072136')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20160403072330')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20160403074105')
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[36m (33.3ms)[0m  [1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (24.5ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations`  ON `schema_migrations` (`version`) 
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to CreateStudents (20160403072136)
+  [1m[35m (25.9ms)[0m  CREATE TABLE `students` (`id` int(11) auto_increment PRIMARY KEY, `name` varchar(255), `surname` varchar(255), `password` varchar(255), `slack_username` varchar(255), `bootcamp_id` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160403072136')
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Migrating to CreateExercises (20160403072330)
+  [1m[35m (10.5ms)[0m  CREATE TABLE `exercises` (`id` int(11) auto_increment PRIMARY KEY, `student_id` int(11), `pre_work_id` int(11), `url` varchar(255), `completed` tinyint(1), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160403072330')
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+Migrating to CreateBootcamps (20160403074105)
+  [1m[35m (9.3ms)[0m  CREATE TABLE `bootcamps` (`id` int(11) auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.9ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160403074105')
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Migrating to CreatePreWorks (20160403074143)
+  [1m[35m (10.4ms)[0m  CREATE TABLE `pre_works` (`id` int(11) auto_increment PRIMARY KEY, `bootcamp_id` int(11), `name` varchar(255), `version` int(11), `url` varchar(255), `learning_unit` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160403074143')
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Migrating to AddDeviseToStudents (20160403085230)
+  [1m[35m (31.9ms)[0m  ALTER TABLE `students` ADD `email` varchar(255) DEFAULT '' NOT NULL
+  [1m[36m (44.1ms)[0m  [1mALTER TABLE `students` ADD `encrypted_password` varchar(255) DEFAULT '' NOT NULL[0m
+  [1m[35m (39.8ms)[0m  CREATE UNIQUE INDEX `index_students_on_email`  ON `students` (`email`) 
+  [1m[36m (1.9ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160403085230')
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'ironhack_dev'
+  AND fk.table_name = 'bootcamps'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `bootcamps`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'ironhack_dev'
+  AND fk.table_name = 'exercises'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `exercises`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'ironhack_dev'
+  AND fk.table_name = 'pre_works'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `pre_works`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'ironhack_dev'
+  AND fk.table_name = 'students'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `students`
+  [1m[36m (42.9ms)[0m  [1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (32.3ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations`  ON `schema_migrations` (`version`) 
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to CreateStudents (20160403072136)
+  [1m[35m (27.6ms)[0m  CREATE TABLE `students` (`id` int(11) auto_increment PRIMARY KEY, `name` varchar(255), `surname` varchar(255), `slack_username` varchar(255), `bootcamp_id` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160403072136')
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Migrating to CreateExercises (20160403072330)
+  [1m[35m (8.7ms)[0m  CREATE TABLE `exercises` (`id` int(11) auto_increment PRIMARY KEY, `student_id` int(11), `pre_work_id` int(11), `url` varchar(255), `completed` tinyint(1), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160403072330')
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+Migrating to CreateBootcamps (20160403074105)
+  [1m[35m (10.6ms)[0m  CREATE TABLE `bootcamps` (`id` int(11) auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160403074105')
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+Migrating to CreatePreWorks (20160403074143)
+  [1m[35m (9.8ms)[0m  CREATE TABLE `pre_works` (`id` int(11) auto_increment PRIMARY KEY, `bootcamp_id` int(11), `name` varchar(255), `version` int(11), `url` varchar(255), `learning_unit` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160403074143')
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Migrating to AddDeviseToStudents (20160403085230)
+  [1m[35m (30.0ms)[0m  ALTER TABLE `students` ADD `email` varchar(255) DEFAULT '' NOT NULL
+  [1m[36m (39.0ms)[0m  [1mALTER TABLE `students` ADD `encrypted_password` varchar(255) DEFAULT '' NOT NULL[0m
+  [1m[35m (23.6ms)[0m  CREATE UNIQUE INDEX `index_students_on_email`  ON `students` (`email`) 
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160403085230')
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'ironhack_dev'
+  AND fk.table_name = 'bootcamps'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `bootcamps`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'ironhack_dev'
+  AND fk.table_name = 'exercises'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `exercises`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'ironhack_dev'
+  AND fk.table_name = 'pre_works'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `pre_works`
+  [1m[36m (0.3ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'ironhack_dev'
+  AND fk.table_name = 'students'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `students`
+  [1m[36m (0.2ms)[0m  [1mSELECT @@FOREIGN_KEY_CHECKS[0m
+  [1m[35m (0.2ms)[0m  SET FOREIGN_KEY_CHECKS = 0
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM `bootcamps`
+  [1m[36mFixture Insert (1.3ms)[0m  [1mINSERT INTO `bootcamps` (`name`, `created_at`, `updated_at`, `id`) VALUES ('MyString', '2016-04-03 08:59:59', '2016-04-03 08:59:59', 980190962)[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO `bootcamps` (`name`, `created_at`, `updated_at`, `id`) VALUES ('MyString', '2016-04-03 08:59:59', '2016-04-03 08:59:59', 298486374)
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM `exercises`[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO `exercises` (`student_id`, `pre_work_id`, `url`, `completed`, `created_at`, `updated_at`, `id`) VALUES (1, 1, 'url1', 0, '2016-04-03 08:59:59', '2016-04-03 08:59:59', 980190962)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO `exercises` (`student_id`, `pre_work_id`, `url`, `completed`, `created_at`, `updated_at`, `id`) VALUES (1, 3, 'url2', 1, '2016-04-03 08:59:59', '2016-04-03 08:59:59', 298486374)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO `exercises` (`student_id`, `pre_work_id`, `url`, `completed`, `created_at`, `updated_at`, `id`) VALUES (2, 1, 'url3', 0, '2016-04-03 08:59:59', '2016-04-03 08:59:59', 113629430)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM `pre_works`[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO `pre_works` (`bootcamp_id`, `name`, `version`, `url`, `learning_unit`, `created_at`, `updated_at`, `id`) VALUES (1, 'name1', 1, 'url1', 'Git', '2016-04-03 08:59:59', '2016-04-03 08:59:59', 980190962)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO `pre_works` (`bootcamp_id`, `name`, `version`, `url`, `learning_unit`, `created_at`, `updated_at`, `id`) VALUES (1, 'name1', 2, 'url2', 'Git', '2016-04-03 08:59:59', '2016-04-03 08:59:59', 298486374)[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO `pre_works` (`bootcamp_id`, `name`, `version`, `url`, `learning_unit`, `created_at`, `updated_at`, `id`) VALUES (1, 'name2', 1, 'url3', 'Ruby', '2016-04-03 08:59:59', '2016-04-03 08:59:59', 113629430)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO `pre_works` (`bootcamp_id`, `name`, `version`, `url`, `learning_unit`, `created_at`, `updated_at`, `id`) VALUES (2, 'name3', 1, 'url4', 'Javascript', '2016-04-03 08:59:59', '2016-04-03 08:59:59', 281110143)[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM `students`
+  [1m[36m (1.4ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  SET FOREIGN_KEY_CHECKS = 1
+  [1m[36m (0.1ms)[0m  [1mSELECT @@FOREIGN_KEY_CHECKS[0m
+  [1m[35m (0.1ms)[0m  SET FOREIGN_KEY_CHECKS = 0
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM `bootcamps`
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO `bootcamps` (`name`, `created_at`, `updated_at`, `id`) VALUES ('MyString', '2016-04-03 09:01:06', '2016-04-03 09:01:06', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO `bootcamps` (`name`, `created_at`, `updated_at`, `id`) VALUES ('MyString', '2016-04-03 09:01:06', '2016-04-03 09:01:06', 298486374)
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM `exercises`[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO `exercises` (`student_id`, `pre_work_id`, `url`, `completed`, `created_at`, `updated_at`, `id`) VALUES (1, 1, 'url1', 0, '2016-04-03 09:01:06', '2016-04-03 09:01:06', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO `exercises` (`student_id`, `pre_work_id`, `url`, `completed`, `created_at`, `updated_at`, `id`) VALUES (1, 3, 'url2', 1, '2016-04-03 09:01:06', '2016-04-03 09:01:06', 298486374)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO `exercises` (`student_id`, `pre_work_id`, `url`, `completed`, `created_at`, `updated_at`, `id`) VALUES (2, 1, 'url3', 0, '2016-04-03 09:01:06', '2016-04-03 09:01:06', 113629430)
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM `pre_works`[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO `pre_works` (`bootcamp_id`, `name`, `version`, `url`, `learning_unit`, `created_at`, `updated_at`, `id`) VALUES (1, 'name1', 1, 'url1', 'Git', '2016-04-03 09:01:06', '2016-04-03 09:01:06', 980190962)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO `pre_works` (`bootcamp_id`, `name`, `version`, `url`, `learning_unit`, `created_at`, `updated_at`, `id`) VALUES (1, 'name1', 2, 'url2', 'Git', '2016-04-03 09:01:06', '2016-04-03 09:01:06', 298486374)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO `pre_works` (`bootcamp_id`, `name`, `version`, `url`, `learning_unit`, `created_at`, `updated_at`, `id`) VALUES (1, 'name2', 1, 'url3', 'Ruby', '2016-04-03 09:01:06', '2016-04-03 09:01:06', 113629430)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO `pre_works` (`bootcamp_id`, `name`, `version`, `url`, `learning_unit`, `created_at`, `updated_at`, `id`) VALUES (2, 'name3', 1, 'url4', 'Javascript', '2016-04-03 09:01:06', '2016-04-03 09:01:06', 281110143)[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM `students`
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO `students` (`name`, `surname`, `encrypted_password`, `email`, `slack_username`, `bootcamp_id`, `created_at`, `updated_at`, `id`) VALUES ('st1', 'sr1', '$2a$10$8NVcIx0xMVQbkZM2OIlXFe5/XclLjopoXZGKT7E5H3eIkRMIW63sa', 'st1@ironhack.com', 'slk1', 1, '2016-04-03 09:01:06', '2016-04-03 09:01:06', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO `students` (`name`, `surname`, `encrypted_password`, `email`, `slack_username`, `bootcamp_id`, `created_at`, `updated_at`, `id`) VALUES ('st2', 'sr2', '$2a$10$oAHJMhEi0c1ajcxWRE1yiuvKctNnzjYoLLUAitWRiGxqKy0aeSeYy', 'st2@ironhack.com', 'slk2', 1, '2016-04-03 09:01:06', '2016-04-03 09:01:06', 298486374)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO `students` (`name`, `surname`, `encrypted_password`, `email`, `slack_username`, `bootcamp_id`, `created_at`, `updated_at`, `id`) VALUES ('st3', 'sr3', '$2a$10$S7xE.zE5KnaoVSWUEsA/eONIJ6uOoPE3QvKN02LLLnY9ruwo6Bsv.', 'st3@ironhack.com', 'slk3', 2, '2016-04-03 09:01:06', '2016-04-03 09:01:06', 113629430)[0m
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mSET FOREIGN_KEY_CHECKS = 1[0m

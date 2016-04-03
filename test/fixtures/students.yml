@@ -3,7 +3,7 @@
 one:
   name: st1
   surname: sr1
-  password: pw1
+  encrypted_password: <%= Student.new.send(:password_digest, 'pw1') %>
   email: st1@ironhack.com
   slack_username: slk1
   bootcamp_id: 1
@@ -11,7 +11,7 @@ one:
 two:
   name: st2
   surname: sr2
-  password: pw2
+  encrypted_password: <%= Student.new.send(:password_digest, 'pw2') %>
   email: st2@ironhack.com
   slack_username: slk2
   bootcamp_id: 1
@@ -19,7 +19,7 @@ two:
 three:
   name: st3
   surname: sr3
-  password: pw3
+  encrypted_password: <%= Student.new.send(:password_digest, 'pw3') %>
   email: st3@ironhack.com
   slack_username: slk3
   bootcamp_id: 2
