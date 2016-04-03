@@ -4,7 +4,20 @@ class Api::ExercisesController < ApplicationController
   # Get user exercises |
   #--------------------'
   def index
-    render :json => @student.pre_works.to_json
+    response_array = []
+
+    @student.pre_works.each do |pre_work|
+      exercise = @student.exercises.find_by_pre_work_id(pre_work.id)
+
+      response_array << {
+        pre_work_id: pre_work.id,
+        name: pre_work.name,
+        version: pre_work.version,
+        url: pre_work.url,
+        status: exercise ? exercise.status : 'To do'
+      }
+    end
+    render :json => response_array
   end
 
   #-------------------------------------------------------------------------.
