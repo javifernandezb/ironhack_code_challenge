@@ -1,17 +1,18 @@
-# ironhack_code_challenge
-Ironhack code challenge
+# Ironhack code challenge
+
+[Heroku Link] (https://calm-falls-75702.herokuapp.com/)
 
 Load fixtures
 ```
 rake db:fixtures:load
 ```
 
-[Heroku Link] (https://calm-falls-75702.herokuapp.com/)
-
 Credential used to test
+
 >**email:** st1@ironhack.com
 
 >**password:** pw1
+
 
 Get user exercises with basic auth
 ```
