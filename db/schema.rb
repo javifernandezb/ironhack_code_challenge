@@ -11,7 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160403085230) do
+ActiveRecord::Schema.define(version: 20160403171147) do
+
+  create_table "assistants", force: :cascade do |t|
+    t.string   "slack_username", limit: 255
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  create_table "assistants_students", id: false, force: :cascade do |t|
+    t.integer "assistant_id", limit: 4, null: false
+    t.integer "student_id",   limit: 4, null: false
+  end
+
+  add_index "assistants_students", ["assistant_id", "student_id"], name: "index_assistants_students_on_assistant_id_and_student_id", using: :btree
+  add_index "assistants_students", ["student_id", "assistant_id"], name: "index_assistants_students_on_student_id_and_assistant_id", using: :btree
 
   create_table "bootcamps", force: :cascade do |t|
     t.string   "name",       limit: 255
