@@ -7,17 +7,20 @@ class PreWorkTest < ActiveSupport::TestCase
   end
 
   test "should not save pre_work without url" do
-    pre_work = PreWork.new(:bootcamp_id => 1, :learning_unit => 'Git')
+    bootcamp = Bootcamp.first
+    pre_work = PreWork.new(:bootcamp_id => bootcamp.id, :learning_unit => 'Git')
     assert_not pre_work.save, "Saved bootcamp without url"
   end
 
   test "should not save pre_work without learning_unit" do
-    pre_work = PreWork.new(:url => 'url1', :bootcamp_id => 1)
+    bootcamp = Bootcamp.first
+    pre_work = PreWork.new(:url => 'url1', :bootcamp_id => bootcamp.id)
     assert_not pre_work.save, "Saved bootcamp without learning_unit"
   end
 
   test "should save pre_work" do
-    pre_work = PreWork.new(:url => 'url1', :bootcamp_id => 1, :learning_unit => 'Git')
+    bootcamp = Bootcamp.first
+    pre_work = PreWork.new(:url => 'url1', :bootcamp_id => bootcamp.id, :learning_unit => 'Git')
     assert pre_work.save, "Saved pre_work"
   end
 end

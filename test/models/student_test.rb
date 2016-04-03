@@ -7,28 +7,33 @@ class StudentTest < ActiveSupport::TestCase
   end
 
   test "should not save student without email" do
-    student = Student.new(:bootcamp_id => 1, :password => 'aaa')
+    bootcamp = Bootcamp.first
+    student = Student.new(:bootcamp_id => bootcamp.id, :password => 'aaa')
     assert_not student.save, "Saved the student without email"
   end
 
   test "should not save student without password" do
-    student = Student.new(:email => 'e1@ironhack.com', :bootcamp_id => 1)
+    bootcamp = Bootcamp.first
+    student = Student.new(:email => 'e1@ironhack.com', :bootcamp_id => bootcamp.id)
     assert_not student.save, "Saved the student without password"
   end
 
   test "should not save student if email is duplicated" do
-    student = Student.create(:email => 'e1@ironhack.com', :bootcamp_id => 1, :password => 'aaa')
-    student = Student.new(:email => 'e1@ironhack.com', :bootcamp_id => 1, :password => 'aaa')
+    bootcamp = Bootcamp.first
+    student = Student.create(:email => 'e1@ironhack.com', :bootcamp_id => bootcamp.id, :password => 'aaa')
+    student = Student.new(:email => 'e1@ironhack.com', :bootcamp_id => bootcamp.id, :password => 'aaa')
     assert_not student.save, "Saved the student without duplicated email"
   end
 
   test "should not save student if email is wrong format" do
-    student = Student.new(:email => 'e1ironhack.com', :bootcamp_id => 1, :password => 'aaa')
+    bootcamp = Bootcamp.first
+    student = Student.new(:email => 'e1ironhack.com', :bootcamp_id => bootcamp.id, :password => 'aaa')
     assert_not student.save, "Saved the student with wrong email"
   end
 
   test "should save student" do
-    student = Student.new(:email => 'e1@ironhack.com', :bootcamp_id => 1, :password => 'aaa')
+    bootcamp = Bootcamp.first
+    student = Student.new(:email => 'e1@ironhack.com', :bootcamp_id => bootcamp.id, :password => 'aaa')
     assert student.save, "Saved student"
   end
 end
