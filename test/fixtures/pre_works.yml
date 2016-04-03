@@ -1,25 +1,21 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  id: 1
-  bootcamp_id: 1
+  bootcamp: one
   url: url1
   learning_unit: Git
 
 two:
-  id: 2
-  bootcamp_id: 1
+  bootcamp: one
   url: url2
   learning_unit: Javascript
 
 three:
-  id: 3
-  bootcamp_id: 1
+  bootcamp: one
   url: url3
   learning_unit: Ruby
 
 four:
-  id: 4
-  bootcamp_id: 2
+  bootcamp: two
   url: url4
   learning_unit: Javascript
