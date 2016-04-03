@@ -29,8 +29,14 @@
               $tr.append($('<td>', { html: "<a href=" + value.url + ">" + value.url + "</a>" }));
               $tr.append($('<td>', { html: value.status }));
               $tr.append($('<td>', { html: '<input type="text" value="' + value.exercise + '"/>' }));
-              $tr.append($('<td>', { html: '<input type="checkbox"/>' }));
-              $tr.append($('<td>', { html: "<a class='submit' href='javascript:void(0)'>Submit</a>" }));
+
+          if (value.status == 'Done') {
+            $tr.append($('<td>', { html: '<input type="checkbox" checked="true" />' }));
+          } else {
+            $tr.append($('<td>', { html: '<input type="checkbox" />' }));
+          }
+
+          $tr.append($('<td>', { html: "<a class='submit' href='javascript:void(0)'>Submit</a>" }));
 
           $('table').append($tr);
           console.info('===> ok', value);

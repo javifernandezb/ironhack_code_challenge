@@ -5,7 +5,6 @@ class Exercise < ActiveRecord::Base
   validates :student_id, :presence => true
   validates :pre_work_id, :presence => true
   validates :url, :presence => true
-  validates :completed, :presence => true
 
   def status
     self.completed ? 'Done' : 'In progress'
