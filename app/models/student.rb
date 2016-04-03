@@ -9,5 +9,8 @@ class Student < ActiveRecord::Base
 
   validates :bootcamp_id, :presence => true
   validates :password, :presence => true
-  validates :email, :presence => true
+  validates :email,
+            :presence   => true,
+            :format     => { :with => /\A([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})\z/i },
+            :uniqueness => { :case_sensitive => false }
 end

@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
 
   before_filter :check_auth
 
+  protected
+
   #------------------------------------------------------.
   # The student must be able to authenticate via the API |
   #------------------------------------------------------'
@@ -13,7 +15,6 @@ class ApplicationController < ActionController::Base
       resource = Student.find_by_email(username)
       if resource.valid_password?(password)
         sign_in :student, resource
-        @student = resource
       end
     end
   end

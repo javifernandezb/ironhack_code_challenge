@@ -4,10 +4,16 @@ class Api::ExercisesController < ApplicationController
   # Get user exercises |
   #--------------------'
   def index
+    puts '====================='
+    puts '====================='
+    puts current_student.inspect
+    puts '====================='
+    puts '====================='
+
     response_array = []
 
-    @student.pre_works.each do |pre_work|
-      exercise = @student.exercises.find_by_pre_work_id(pre_work.id)
+    current_student.pre_works.each do |pre_work|
+      exercise = current_student.exercises.find_by_pre_work_id(pre_work.id)
 
       response_array << {
         pre_work_id: pre_work.id,
@@ -30,7 +36,13 @@ class Api::ExercisesController < ApplicationController
   #    · Done                                                               |
   #-------------------------------------------------------------------------'
   def create
-    exercise = @student.exercises.where(:pre_work_id => params[:pre_work_id]).first_or_create
+    puts '====================='
+    puts '====================='
+    puts current_student.inspect
+    puts '====================='
+    puts '====================='
+
+    exercise = current_student.exercises.where(:pre_work_id => params[:pre_work_id]).first_or_create
     exercise.update_attributes({:url => params[:url], :completed => params[:completed]})
     render :json => exercise.to_json
   end
